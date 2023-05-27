@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Details</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Stock Details</h1>
+    
+    <form method="POST" action="/">
+        <input type="text" name="symbol" placeholder="Enter stock symbol">
+        <input type="submit" value="Submit">
+    </form>
+    
+    <div id="plot"></div>
+    
+    <script>
+        // Get the JSON data for the plot from the backend
+        var plotJSON = {{ plot_json | safe }};
+        
+        // Display the candlestick plot
+        Plotly.newPlot('plot', plotJSON.data, plotJSON.layout);
+    </script>
+</body>
+</html>
